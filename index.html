@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Bobo 💛</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #3a3a6a);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        background: #ff7aa2;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    .heart {
+        position: absolute;
+        color: #ff7aa2;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        from { transform: translateY(100vh); opacity: 1; }
+        to { transform: translateY(-10vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hey Bobo 💛</h1>
+    <p id="text"></p>
+    <button onclick="nextMessage()">Tap here…</button>
+</div>
+
+<script>
+const messages = [
+    "I heard you're not feeling okay today...",
+    "So I made something just for you 🥺",
+    "Not because I had to...",
+    "But because you matter to me. A lot.",
+    "More than you probably realize.",
+    "Even on your worst days...",
+    "You’re still someone really special.",
+    "And I just want to remind you of that.",
+    "I wish I could be there right now...",
+    "Maybe just sit with you quietly.",
+    "Or make you smile a little.",
+    "But for now…",
+    "I hope this does something small 💫",
+    "Because honestly...",
+    "I really love you 💖",
+    "Now promise me one thing?",
+    "Take a deep breath…",
+    "And smile a little 😊"
+];
+
+let index = 0;
+const textElement = document.getElementById("text");
+
+function nextMessage() {
+    if (index < messages.length) {
+        textElement.style.opacity = 0;
+        setTimeout(() => {
+            textElement.innerText = messages[index];
+            textElement.style.opacity = 1;
+            index++;
+        }, 300);
+    } else {
+        document.querySelector("button").innerText = "Replay 💫";
+        index = 0;
+    }
+}
+
+// floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 10 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
