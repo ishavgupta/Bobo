@@ -1,133 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>For Bobo 💛</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mom ❤️</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #1e1e2f, #3a3a6a);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
-        overflow: hidden;
-    }
 
-    .container {
-        max-width: 600px;
-        padding: 20px;
-    }
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    font-family:'Segoe UI',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+}
 
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at top,#ff8fab,#111);
+}
 
-    p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        opacity: 0;
-        transition: opacity 1s ease;
-    }
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+    max-width:800px;
+}
 
-    button {
-        margin-top: 30px;
-        padding: 12px 24px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 25px;
-        background: #ff7aa2;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-    }
+.line{
+    opacity:0;
+    font-size:1.5rem;
+    margin:18px 0;
+    transform:translateY(20px);
+    animation:fadeUp 1.5s forwards;
+}
 
-    button:hover {
-        transform: scale(1.1);
-    }
+.line:nth-child(1){animation-delay:1s;}
+.line:nth-child(2){animation-delay:4s;}
+.line:nth-child(3){animation-delay:7s;}
+.line:nth-child(4){animation-delay:10s;}
+.line:nth-child(5){animation-delay:13s;}
+.line:nth-child(6){animation-delay:16s;}
 
-    .heart {
-        position: absolute;
-        color: #ff7aa2;
-        font-size: 20px;
-        animation: float 6s linear infinite;
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
+}
 
-    @keyframes float {
-        from { transform: translateY(100vh); opacity: 1; }
-        to { transform: translateY(-10vh); opacity: 0; }
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    animation:float linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
     }
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="background"></div>
+
 <div class="container">
-    <h1>Hey Bobo 💛</h1>
-    <p id="text"></p>
-    <button onclick="nextMessage()">Tap here…</button>
+
+    <div class="line">Happy Mother's Day Mom ❤️</div>
+
+    <div class="line">
+        Thank you for loving me even on my worst days
+    </div>
+
+    <div class="line">
+        Thank you for every sacrifice I never noticed
+    </div>
+
+    <div class="line">
+        No matter how old I grow...
+    </div>
+
+    <div class="line">
+        your presence will always feel like home
+    </div>
+
+    <div class="line">
+        Love always,<br><br>
+        Isha ❤️
+    </div>
+
 </div>
 
 <script>
-const messages = [
-    "I heard you're not feeling okay today...",
-    "So I made something just for you 🥺",
-    "Not because I had to...",
-    "But because you matter to me. A lot.",
-    "More than you probably realize.",
-    "Even on your worst days...",
-    "You’re still someone really special.",
-    "And I just want to remind you of that.",
-    "I wish I could be there right now...",
-    "Maybe just sit with you quietly.",
-    "Or make you smile a little.",
-    "But for now…",
-    "I hope this does something small 💫",
-    "Because honestly...",
-    "I really love you 💖",
-    "Now promise me one thing?",
-    "Take a deep breath…",
-    "And smile a little 😊"
-];
 
-let index = 0;
-const textElement = document.getElementById("text");
+function createHeart(){
 
-function nextMessage() {
-    if (index < messages.length) {
-        textElement.style.opacity = 0;
-        setTimeout(() => {
-            textElement.innerText = messages[index];
-            textElement.style.opacity = 1;
-            index++;
-        }, 300);
-    } else {
-        document.querySelector("button").innerText = "Replay 💫";
-        index = 0;
-    }
-}
+    const heart=document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML='❤️';
 
-// floating hearts dw
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 10 + 15 + "px";
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(Math.random()*20+10)+'px';
+    heart.style.animationDuration=(Math.random()*5+5)+'s';
+
     document.body.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(()=>{
         heart.remove();
-    }, 6000);
+    },10000);
 }
 
-setInterval(createHeart, 400);
+setInterval(createHeart,300);
+
 </script>
 
 </body>
